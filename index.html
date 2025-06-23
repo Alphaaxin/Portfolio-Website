@@ -4,25 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammed Habeeb Hussain Alkaf - Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        // Check if EmailJS is loaded
-        (function() {
-            console.log('Checking EmailJS availability...');
-            if (typeof emailjs === 'undefined') {
-                console.error('EmailJS not loaded! Check if the script is blocked by an ad blocker.');
-            } else {
-                console.log('EmailJS is available');
-                try {
-                    emailjs.init('U05Y0nVVpcipkW93z');
-                    console.log('EmailJS initialized successfully');
-                } catch (error) {
-                    console.error('EmailJS initialization failed:', error);
-                }
-            }
-        })();
-    </script>
     <style>
         * {
             margin: 0;
@@ -210,6 +191,62 @@
         .project-desc {
             color: #d1d5db;
             font-size: 1rem;
+        }
+
+        /* Project Details Panel */
+        .project-details-panel {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px; /* Adjust width as needed */
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, rgba(26, 26, 26, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            transform: translateX(100%);
+            transition: transform 0.4s ease-in-out;
+            padding: 40px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+            border-left: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .project-details-panel.open {
+            transform: translateX(0);
+        }
+
+        .project-details-panel .close-btn {
+            position: absolute;
+            top: 20px;
+right: 20px;
+            font-size: 1.5rem;
+            color: #22c55e;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .project-details-panel .close-btn:hover {
+            color: #16a34a;
+        }
+
+        .project-details-panel .panel-title {
+            font-size: 2rem;
+            color: #22c55e;
+            margin-bottom: 1.5rem;
+            padding-right: 30px; /* Space for the close button */
+        }
+
+        .project-details-panel .panel-description {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .project-details-panel .github-link {
+            display: inline-block;
+            margin-top: 1rem;
         }
 
         .current-work {
@@ -465,7 +502,7 @@
         <header>
             <h1 class="hero-title">Mohammed Habeeb Hussain Alkaf</h1>
             <p class="hero-subtitle">CSE Student | PR & Social Media Manager | Nexus Coding Club</p>
-            <a href="#about" class="cta-button">Explore My Journey</a>
+            <a href="/about.html" class="cta-button">Explore My Journey</a>
         </header>
 
         <section id="about" class="section">
@@ -474,7 +511,9 @@
                 <p>Hello! I'm Mohammed Habeeb Hussain Alkaf, a passionate Computer Science and Engineering student currently in my 1st year, 2nd semester at <strong>Shadan College of Engineering and Technology</strong>. I serve as the <strong>PR & Social Media Manager</strong> for the Nexus Coding Club, where I help bridge the gap between technology and community engagement.</p>
                 <br>
                 <p>My journey in tech is driven by curiosity and a desire to create meaningful digital experiences. From web development to Discord bot creation, I'm constantly exploring new technologies and pushing the boundaries of what's possible.</p>
+                <a href="/about.html" class="cta-button" style="margin-top: 30px;">Want to know more about me?</a>
             </div>
+            
         </section>
 
         <section id="skills" class="section">
@@ -501,27 +540,30 @@
         <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-github-link="https://github.com/Alphaaxin/Document-Checker">
                     <h3 class="project-title">Document-Checker</h3>
                     <p class="project-desc">A comprehensive document validation system that ensures accuracy and compliance across various file formats.</p>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-github-link="https://github.com/Alphaaxin/LearnX">
                     <h3 class="project-title">LearnX</h3>
                     <p class="project-desc">An innovative learning platform designed to enhance educational experiences through interactive content.</p>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-github-link="https://github.com/Alphaaxin/Zepto-Clone">
                     <h3 class="project-title">Zepto Clone</h3>
                     <p class="project-desc">A feature-rich clone of the popular delivery app, showcasing modern web development practices.</p>
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-github-link="https://github.com/Alphaaxin/SignIn-SignUp-Page">
                     <h3 class="project-title">Sign In/Sign Up Page</h3>
                     <p class="project-desc">A sleek and secure authentication system with modern UI/UX design principles.</p>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-github-link="https://github.com/Alphaaxin/Python-Lab">
                     <h3 class="project-title">Python Lab</h3>
-                    <p class="project-desc">A collection of Python experiments and algorithms demonstrating programming concepts.</p>
+        
                 </div>
-                <div class="project-card">
+
+                <div class="project-card" data-github-link="https://github.com/Alphaaxin/Skillhive">
+
                     <h3 class="project-title">Skillhive</h3>
                     <p class="project-desc">A platform for skill development and knowledge sharing among developers and learners.</p>
                 </div>
@@ -535,6 +577,10 @@
                 <p>Currently developing <strong>Nexa</strong>, an advanced Discord bot specifically designed for the Nexus server. This project combines my passion for community building with technical expertise, creating an intelligent bot that enhances user engagement and server management capabilities.</p>
             </div>
         </section>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="projects.html" class="cta-button">Explore all my projects on Github</a>
+        </div>
 
         <section id="contact" class="section">
             <h2 class="section-title">Contact Me</h2>
@@ -606,6 +652,8 @@
         <p>&copy; 2025 Mohammed Habeeb Hussain Alkaf. Crafted with passion and code.</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         // Three.js Setup
         let scene, camera, renderer, particles, mouseX = 0, mouseY = 0;
@@ -917,6 +965,33 @@
                 this.parentElement.style.transform = 'translateY(0)';
             });
         });
+
+        // Project Details Panel functionality
+        const projectCards = document.querySelectorAll('.project-card');
+        const projectDetailsPanel = document.querySelector('.project-details-panel');
+        const panelTitle = projectDetailsPanel.querySelector('.panel-title');
+        const panelDescription = projectDetailsPanel.querySelector('.panel-description');
+        const githubLink = projectDetailsPanel.querySelector('.github-link');
+        const closeBtn = projectDetailsPanel.querySelector('.close-btn');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.project-title').textContent;
+                const description = this.querySelector('.project-desc').textContent;
+                const githubUrl = this.dataset.githubLink;
+
+                panelTitle.textContent = title;
+                panelDescription.textContent = description;
+                githubLink.href = githubUrl;
+
+                projectDetailsPanel.classList.add('open');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            projectDetailsPanel.classList.remove('open');
+        });
     </script>
+
 </body>
 </html>
